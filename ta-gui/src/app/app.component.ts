@@ -18,6 +18,13 @@ export class AppComponent {
      this.alunoService.gravar(a);
      this.alunos.push(a);
      this.aluno = {nome: "", cpf: "", email: "", cin_login: ""};
+     this.aluno = {nome: "", cpf: "", email: ""};
+     if (this.alunoService.gravar(a)) {
+       this.alunos.push(a);
+       this.aluno = {nome: "", cpf: "", email: ""};
+     } else {
+       this.aluno.cpf = "";
+     }
   }
 }
 
