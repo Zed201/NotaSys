@@ -15,15 +15,12 @@ export class AppComponent {
    alunos: Aluno[] = [];
 
    gravar(a: Aluno): void {
-     this.alunoService.gravar(a);
-     this.alunos.push(a);
-     this.aluno = {nome: "", cpf: "", email: "", cin_login: ""};
-     this.aluno = {nome: "", cpf: "", email: ""};
      if (this.alunoService.gravar(a)) {
        this.alunos.push(a);
-       this.aluno = {nome: "", cpf: "", email: ""};
+       this.aluno = {nome: "", cpf: "", email: "", cin_login: ""};
      } else {
        this.aluno.cpf = "";
+       alert("Já existe um aluno com esse CPF");
      }
   }
 }
