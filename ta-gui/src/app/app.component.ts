@@ -12,10 +12,12 @@ import { AlunoService } from './aluno.service';
 export class AppComponent {
    aluno: Aluno = {nome: "", cpf: "", email: "", cin_login: ""};
    alunoService = new AlunoService();
+   alunos: Aluno[] = [];
 
    gravar(a: Aluno): void {
      this.alunoService.gravar(a);
-     this.aluno = {nome: "", cpf: "", email: ""};
+     this.alunos.push(a);
+     this.aluno = {nome: "", cpf: "", email: "", cin_login: ""};
   }
 }
 

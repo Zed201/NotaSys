@@ -7,23 +7,32 @@
 </h2>
 
 <table>
-<tr>
-   <td><label for="nome">Nome </label></td>
-   <td><input name="nome" id="nome" [(ngModel)]="aluno.nome" ></td>
-</tr>
-<tr>
-   <td><label for="cpf" >CPF </label></td>
-   <td><input name="cpf" id="cpf" [(ngModel)]="aluno.cpf" ></td>
-</tr>
-<tr>
-   <td><label for="email">e-mail </label></td>
-   <td><input name="email" id="email" [(ngModel)]="aluno.email" ></td>
-</tr>
-<tr>
-   <td><label for="login">login cin </label></td>
-   <td><input name="login" id="login" [(ngModel)]="aluno.cin_login" ></td>
-</tr>
+  <tr>
+    <td><label for="nome">Nome </label></td>
+    <td><input name="nome" id="nome" [(ngModel)]="aluno.nome" ></td>
+  </tr>
+  <tr>
+    <td><label for="cpf" >CPF </label></td>
+    <td><input name="cpf" id="cpf" [(ngModel)]="aluno.cpf" ></td>
+  </tr>
+  <tr>
+    <td><label for="email">e-mail </label></td>
+    <td><input name="email" id="email" [(ngModel)]="aluno.email" ></td>
+  </tr>
+  <tr>
+    <td><label for="login">login cin </label></td>
+    <td><input name="login" id="login" [(ngModel)]="aluno.cin_login" ></td>
+  </tr>
   <tr>
     <td><button (click)="gravar(aluno)">Adicionar</button></td>
   </tr>
 </table>
+
+<ul>
+  <li *ngFor="let a of alunos">
+    <span>{{a.nome}}</span>,
+    <span>{{a.cpf}}</span>,
+    <span>{{a.email}}</span>,
+    <span>{{a.cin_login}}</span>
+  </li>
+</ul>
