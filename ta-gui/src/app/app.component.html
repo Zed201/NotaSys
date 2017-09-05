@@ -8,15 +8,6 @@
 </h2>
 
 <table>
-<<<<<<< HEAD
-  <tr>
-    <td><label for="nome">Nome </label></td>
-    <td><input name="nome" id="nome" [(ngModel)]="aluno.nome" ></td>
-  </tr>
-  <tr>
-    <td><label for="cpf" >CPF </label></td>
-    <td><input name="cpf" id="cpf" [(ngModel)]="aluno.cpf" ></td>
-    <td *ngIf="cpfduplicado">
 <tr>
    <td><label>Nome </label></td>
    <td><input [(ngModel)]="aluno.nome" ></td>
@@ -28,29 +19,13 @@
    <td *ngIf="cpfduplicado">
      Já existe um aluno com esse CPF
    </td>
-  </tr>
-  <tr>
-    <td><label for="email">e-mail </label></td>
-    <td><input name="email" id="email" [(ngModel)]="aluno.email" ></td>
-  </tr>
-  <tr>
-    <td><label for="login">login cin </label></td>
-    <td><input name="login" id="login" [(ngModel)]="aluno.cin_login" ></td>
-  </tr>
-  <tr>
-    <td><button (click)="gravar(aluno)">Adicionar</button></td>
-  </tr>
+</tr>
+<tr>
+   <td><label>e-mail </label></td>
+   <td><input [(ngModel)]="aluno.email" ></td>
+</tr>
 </table>
 
-
-<ul class="alunos">
-<li *ngFor="let a of alunos">
-    <span>{{a.nome}}</span>,
-    <span>{{a.cpf}}</span>,
-    <span>{{a.email}}</span>
-</li>
-</ul>
-<<<<<<< HEAD
 <table class="alunos">
 <tr *ngIf="alunos.length > 0">
    <th>Nome</th>

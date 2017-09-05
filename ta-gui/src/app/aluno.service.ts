@@ -6,8 +6,6 @@ import { Aluno } from './aluno';
 export class AlunoService {
   alunos: Aluno[] = [];
 
-  gravar(aluno: Aluno): Aluno {
-
   criar(aluno: Aluno): Aluno {
     aluno = aluno.clone();
     var result = null;

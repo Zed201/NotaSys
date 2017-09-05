@@ -2,7 +2,6 @@ export class Aluno {
   nome: string;
   cpf: string;
   email: string;
-  cin_login: string
   metas: Map<string,string>;
 
   constructor() {
@@ -33,4 +32,3 @@ export class Aluno {
     return metas;
   }
 }
-
