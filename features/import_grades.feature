@@ -20,7 +20,7 @@ Feature: Importação de notas a partir de uma planilha total
 
     Scenario: Importação de Planilha Sem Mapeamento de Coluna Obrigatória
     Given que eu estou na página de importação de notas
-    And que eu selecionei um arquivo de notas válido (.xlsx)
+    And que eu carreguei um arquivo válido (.xlsx)
     When eu tento iniciar a importação sem mapear a coluna de notas
     Then o sistema deve exibir uma mensagem de erro clara sobre o mapeamento faltante
     And a importação não deve ser concluída
@@ -43,8 +43,13 @@ Feature: Importação de notas a partir de uma planilha total
     Scenario: Importação de Planilha com Nome de Coluna Diferente
     Given que eu estou na página de importação de notas
     And que eu selecionei um arquivo onde a coluna de notas se chama "Resultado"
+<<<<<<< HEAD
     When eu mapeio a coluna "Resultado" para o campo "Notas Finais" do sistema, e verifico que a coluna "Matrícula" não foi mapeada
     Then as notas devem ser atualizadas corretamente
+=======
+    When eu mapeio a coluna "Resultado" para o campo "Notas Finais" do sistema
+    Then as notas devem ser atualizadas corretamente
+>>>>>>> e12d328 (refactor: rename given step in scenario 1 for consistency)
 
     Scenario: Tentativa de Importar Arquivo de Tipo Não Suportado
     Given que eu estou na página de importação de notas
