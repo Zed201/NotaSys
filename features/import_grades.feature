@@ -43,6 +43,11 @@ Feature: Importação de notas a partir de uma planilha total
     Scenario: Importação de Planilha com Nome de Coluna Diferente
     Given que eu estou na página de importação de notas
     And que eu selecionei um arquivo onde a coluna de notas se chama "Resultado"
-   When eu mapeio a coluna "Resultado" para o campo "Notas Finais" do sistema, e verifico que a coluna "Matrícula" não foi mapeada
-    Then as notas devem ser atualizadas corretamente
+    When eu mapeio a coluna "Resultado" para o campo "Notas Finais" do sistema, e verifico que a coluna "Matrícula" não foi mapeada
+    Then as notas devem ser atualizadas corretamente
 
+    Scenario: Tentativa de Importar Arquivo de Tipo Não Suportado
+    Given que eu estou na página de importação de notas
+    When eu tento selecionar um arquivo do tipo .pdf
+    Then o sistema deve bloquear o upload do arquivo
+    And o sistema deve exibir uma mensagem de erro indicando formatos suportados
