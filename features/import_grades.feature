@@ -31,3 +31,6 @@ Feature: Importação de notas a partir de uma planilha
     When eu inicio a importação
     Then o sistema deve exibir um indicador de progresso
     And a importação deve ser concluída em um tempo aceitável
+    Then o sistema deve exibir um indicador de progresso
+    And a importação deve ser concluída em um tempo aceitável
+    And o usuário deve receber uma notificação de sucesso pós-conclusão
