@@ -31,3 +31,9 @@ Feature: Importação de notas a partir de uma planilha
     When eu inicio a importação
     Then o sistema deve exibir um indicador de progresso
     And a importação deve ser concluída em um tempo aceitável
+
+    Scenario: Importação de Múltiplas Planilhas (Experimental)
+    Given que eu estou na página de importação de notas
+    When eu seleciono e submeto dois arquivos de planilha de uma só vez
+    Then o sistema deve processar os dois arquivos sequencialmente
+    And as notas de ambos os arquivos devem ser atualizadas corretamente
