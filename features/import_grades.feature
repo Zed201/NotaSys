@@ -25,12 +25,24 @@ Feature: Importação de notas a partir de uma planilha
     Then o sistema deve exibir uma mensagem de erro clara sobre o mapeamento faltante
     And a importação não deve ser concluída
 
-  Scenario: Importação de Planilha com Grande Volume de Dados
+    Scenario: Importação de Planilha com Grande Volume de Dados
+    Given que eu estou na página de importação de notas
+    And que eu selecionei um arquivo de notas com mais de 20.000 linhas
+    When eu inicio a importação
+    Then o sistema deve exibir um indicador de progresso
+    And a importação deve ser concluída em um tempo aceitável
+    And o usuário deve receber uma notificação de sucesso pós-conclusão
+
+
+    Scenario: Importação de Múltiplas Planilhas (Experimental)
     Given que eu estou na página de importação de notas
-    And que eu selecionei um arquivo de notas com mais de 20.000 linhas
-    When eu inicio a importação
-    Then o sistema deve exibir um indicador de progresso
-    And a importação deve ser concluída em um tempo aceitável
-    Then o sistema deve exibir um indicador de progresso
-    And a importação deve ser concluída em um tempo aceitável
-    And o usuário deve receber uma notificação de sucesso pós-conclusão
+    When eu seleciono e submeto dois arquivos de planilha de uma só vez
+    Then o sistema deve processar os dois arquivos sequencialmente
+    And as notas de ambos os arquivos devem ser atualizadas corretamente
+
+    Scenario: Importação de Planilha com Nome de Coluna Diferente
+    Given que eu estou na página de importação de notas
+    And que eu selecionei um arquivo onde a coluna de notas se chama "Resultado"
+    When eu mapeio a coluna "Resultado" para o campo "Notas Finais" do sistema
+    Then as notas devem ser atualizadas corretamente
+
