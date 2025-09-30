@@ -37,3 +37,9 @@ Feature: Importação de notas a partir de uma planilha
     When eu seleciono e submeto dois arquivos de planilha de uma só vez
     Then o sistema deve processar os dois arquivos sequencialmente
     And as notas de ambos os arquivos devem ser atualizadas corretamente
+
+    Scenario: Importação de Planilha com Nome de Coluna Diferente
+    Given que eu estou na página de importação de notas
+    And que eu selecionei um arquivo onde a coluna de notas se chama "Resultado"
+    When eu mapeio a coluna "Resultado" para o campo "Notas Finais" do sistema
+    Then as notas devem ser atualizadas corretamente
