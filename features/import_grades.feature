@@ -1,4 +1,4 @@
-Feature: Importação de notas a partir de uma planilha
+Feature: Importação de notas a partir de uma planilha total
 
   Como professor/administrador
   Eu quero importar notas de uma planilha (.xlsx, .xls, .csv)
