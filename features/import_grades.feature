@@ -43,6 +43,6 @@ Feature: Importação de notas a partir de uma planilha
     Scenario: Importação de Planilha com Nome de Coluna Diferente
     Given que eu estou na página de importação de notas
     And que eu selecionei um arquivo onde a coluna de notas se chama "Resultado"
-    When eu mapeio a coluna "Resultado" para o campo "Notas Finais" do sistema
+   When eu mapeio a coluna "Resultado" para o campo "Notas Finais" do sistema, e verifico que a coluna "Matrícula" não foi mapeada
     Then as notas devem ser atualizadas corretamente
 
