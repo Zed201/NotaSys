@@ -76,7 +76,14 @@ Cenário: Visualização de relatório com 100% de discrepâncias
     AND vejo aluno “Paulo” com 5 discrepâncias em 5 metas
     AND percentual de discrepâncias é igual a 100%
 
-commit 3 na master
-
-commit 1 na dev
-commit 2 na dev
+Cenário: Reenvio da autoavaliação após alteração dos conceitos
+    GIVEN estou logado como “Aluno” com o login “egrab” e senha “123”
+    AND estou na página "Autoavaliação"
+    AND já enviei anteriormente minhas autoavaliações para todas as metas “META 1” e “META 2”
+    WHEN eu modifico os conceitos selecionados em “META 1” e “META 2” para ‘MPA’ e ‘MA’ respectivamente
+    AND seleciono "Enviar" novamente
+    AND continuo na página "Autoavaliação"
+    THEN vejo a mensagem de confirmação "Autoavaliação atualizada com sucesso"
+    AND seleciono em “Menu”
+    AND visualizo que os novos conceitos atualizados ficam salvos para todas as metas “META 1” e “META 2” 
+    AND "META 1" e "META 2" é igual a 'MPA' e 'MA' respectivamente
