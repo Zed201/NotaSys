@@ -24,3 +24,10 @@ And estou na página “Ver nota” da turma “Engenharia de Software”
 When eu vejo a minha média, que é 4,8
 And há indicação visual na cor laranja ao lado da nota
 Then eu sei que estou na final
+
+Scenario: Aluno verificando que foi aprovado por média
+Given eu estou logado como “aluno” com login “maacj” e senha “12345”
+And estou na página “Ver nota” da turma “Engenharia de Software”
+When eu vejo que a “média” é 8,1
+And há indicação visual na cor verde ao lado da média
+Then eu sei que estou aprovado
