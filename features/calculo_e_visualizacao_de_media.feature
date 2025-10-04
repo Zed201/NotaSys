@@ -17,3 +17,10 @@ And eu fiz a prova final
 When eu vejo a “média” entre a “prova final” e a “média geral” é 6,5
 And há indicação visual na cor verde ao lado da média final
 Then eu sei que estou aprovado na final
+
+Scenario: Aluno verificar se está na final
+Given eu estou logado como “aluno” com login “maacj” e senha “12345”
+And estou na página “Ver nota” da turma “Engenharia de Software”
+When eu vejo a minha média, que é 4,8
+And há indicação visual na cor laranja ao lado da nota
+Then eu sei que estou na final
