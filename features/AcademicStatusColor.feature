@@ -73,3 +73,4 @@ Cenário: Visualização de relatório com 100% de discrepâncias
     AND percentual de discrepâncias é igual a 100%
 
 commit 1 na dev
+commit 2 na dev
