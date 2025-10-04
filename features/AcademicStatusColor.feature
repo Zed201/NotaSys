@@ -56,3 +56,19 @@ Cenário: Visualização de relatório com 1 aluno com discrepâncias
     AND discrepâncias é igual a 1
     AND percentual de discrepâncias é igual a 33%
     AND vejo aluna 'Maria' com 3 discrepâncias em 5 metas
+
+Cenário: Visualização de relatório com 100% de discrepâncias
+
+    GIVEN estou logado como “Professor” com o login “egrab” e senha “123”
+    AND estou na página "MENU"
+    AND a “Turma 2” está cadastrada no sistema
+    AND há Aluno “José” com 5 metas onde todas têm autoavaliação “MPA” e avaliação do professor “MA” cadastradas na “Turma 2”
+    AND há Aluno “Maria” com 5 metas onde todas têm autoavaliação “MA” e avaliação do professor “MPA” cadastradas na “Turma 2”
+    AND há Aluno “Paulo” com 5 metas onde todas têm autoavaliação “MANA” e avaliação do professor “MPA” cadastradas na “Turma 2”
+    WHEN eu seleciono “DISCREPÂNCIAS”
+    AND estou na página “DISCREPÂNCIAS”
+    AND seleciono a turma como “Turma 2”
+    THEN vejo o resumo do relatório e a lista de alunos
+    AND total de alunos é igual a 3
+    AND discrepâncias é igual a 3
+    AND percentual de discrepâncias é igual a 100%
