@@ -71,4 +71,7 @@ Cenário: Visualização de relatório com 100% de discrepâncias
     THEN vejo o resumo do relatório e a lista de alunos
     AND total de alunos é igual a 3
     AND discrepâncias é igual a 3
+    AND vejo aluno “José” com 5 discrepâncias em 5 metas
+    AND vejo aluna “Maria” com 5 discrepâncias em 5 me"tas
+    AND vejo aluno “Paulo” com 5 discrepâncias em 5 metas
     AND percentual de discrepâncias é igual a 100%
