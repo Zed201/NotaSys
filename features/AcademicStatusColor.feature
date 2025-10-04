@@ -71,3 +71,5 @@ Cenário: Visualização de relatório com 100% de discrepâncias
     AND total de alunos é igual a 3
     AND discrepâncias é igual a 3
     AND percentual de discrepâncias é igual a 100%
+
+commit 1 na dev
