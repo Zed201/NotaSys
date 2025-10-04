@@ -86,3 +86,4 @@ Cenário: Reenvio da autoavaliação após alteração dos conceitos
     THEN vejo a mensagem de confirmação "Autoavaliação atualizada com sucesso"
     AND seleciono em “Menu”
     AND visualizo que os novos conceitos atualizados ficam salvos para todas as metas “META 1” e “META 2” 
+    AND "META 1" e "META 2" é igual a 'MPA' e 'MA' respectivamente
