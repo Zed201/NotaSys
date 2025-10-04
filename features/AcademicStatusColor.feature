@@ -26,3 +26,18 @@ Cenário: envio mal-sucedido da autoavaliação
     AND volto para a pagina “Autoavaliação 
     AND vejo todas as metas de aprendizagem “META 1” e ‘META” com os conceitos do professor na tela, ‘MA’ e ‘MPA’ respectivamente.
 
+
+Cenário: Visualização de relatório sem discrepâncias
+    GIVEN estou logado como “Professor” com o login “egrab” e senha “123”
+    AND estou na página "MENU"
+    AND a “Turma 2” está cadastrada no sistema
+    AND há Aluno “José” com 5 metas onde todas tem autoavaliação “MPA” e avaliação do professor “MPA” cadastrado na “Turma 2”
+    AND há Aluno “Maria” com 4 metas onde todas tem autoavaliação “MA” e avaliação do professor “MA” e 1 meta com autoavaliação “MA” e avaliação do professor ‘MPA” cadastrada na “Turma 2”
+    AND há Aluno “Paulo” com 5 metas onde todas tem autoavaliação “MANA” e avaliação do professor “MANA” cadastrado na “Turma 2”
+    WHEN eu seleciono “DISCREPÂNCIAS”
+    AND estou na página “DISCREPÂNCIAS”
+    AND seleciono a turma como “Turma 2”
+    THEN vejo a o resumo do relatório e a lista de alunos
+    AND total alunos é igual a 3
+    AND discrepâncias é igual a 0
+    AND percentual de discrepâncias é igual a 0%
