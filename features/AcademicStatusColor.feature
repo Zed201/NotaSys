@@ -75,3 +75,5 @@ Cenário: Visualização de relatório com 100% de discrepâncias
     AND vejo aluna “Maria” com 5 discrepâncias em 5 me"tas
     AND vejo aluno “Paulo” com 5 discrepâncias em 5 metas
     AND percentual de discrepâncias é igual a 100%
+
+commit 3 na master
