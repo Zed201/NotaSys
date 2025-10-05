@@ -30,4 +30,4 @@ Feature: Importação de Notas de Roteiros
         And Busco a opção de importação
         And Existe um arquivo “notas_roteiros.csv”
         When Carrego um arquivo diferente "Notas_roteiros.csv" 
-        Then Recebo uma mensagem de “HTTP error 409”, indicando sobreposição de arquivo
+        Then Recebo uma mensagem de “HTTP error 409”, indicando que há sobreposição de notas
