@@ -26,23 +26,23 @@ And Vejo uma mensagem de erro "300" que indica que o campo da quantidade de aval
 
 Scenario: Configuração de cálculo de média sem todos os pesos
 Given Eu criando uma turma
-And Estou na página “Configuração de Média”
+And Estou na página "Configuração de Média"
 When Eu preencho os campos da quantidade de avaliações
 And Não Preencho 1 dos pesos das avaliações
 And Especifico o cálculo de média
 And Confirmo a configuração
 Then Estando na mesma página
-And Vejo uma mensagem de erro “200” que indica que o peso de uma das avaliações não foi definida.
+And Vejo uma mensagem de erro "200" que indica que o peso de uma das avaliações não foi definida.
 
 Scenario: Configuração de cálculo de média sem especificação do cálculo
 Given Eu criando uma turma
-And Estou na página “Configuração de Média”
+And Estou na página "Configuração de Média"
 When Eu não preencho os campos da quantidade de avaliações
 And Preencho os pesos de cada avaliação
 And Não especifico o cálculo de média
 And Confirmo a configuração
 Then Estando na mesma página
-And Vejo uma mensagem de erro “100” que indica que o cálculo da média não foi especificado
+And Vejo uma mensagem de erro "100" que indica que o cálculo da média não foi especificado
 And Novo passo
 
 Scenario: Novo cenário
