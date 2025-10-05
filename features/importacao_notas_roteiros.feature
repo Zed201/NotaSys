@@ -6,7 +6,7 @@ Feature: Importação de Notas de Roteiros
         Given Estou na página “Avaliações”
         And Busco a opção de importação
         And Não existe um arquivo de notas
-        When Carrego um arquivo "notas_roteiros.csv"
+        When Carrego um arquivo "Notas_roteiros.csv"
         And O csv possui as colunas correspondentes
         Then Recebo uma mensagem de sucesso 
 
@@ -14,27 +14,27 @@ Feature: Importação de Notas de Roteiros
         Given Estou na página “Avaliações”
         And Busco a opção de importação
         And Não existe um arquivo de notas
-        When Carrego um arquivo "notas_roteiros.xlsl"
-        Then Recebo uma mensagem de erro "HTTP error 409" e uma mensagem indicando formato errado de arquivo
+        When Carrego um arquivo "Notas_roteiros.xlsl"
+        Then Recebo uma mensagem de erro "HTTP error 409" e uma mensagem indicando "Formato errado de arquivo"
 
     Scenario: Importação de Notas, formato errado
         Given Estou na página “Avaliações”
         And Busco a opção de importação
         And Não existe um arquivo de notas
-        When Carrego um arquivo "notas_roteiros.csv"
+        When Carrego um arquivo "Notas_roteiros.csv"
         And O csv possui uma letra “N” no espaço de uma nota
-        Then Recebo uma mensagem de erro "HTTP error 415" e uma mensagem de "formato de arquivo errado"
+        Then Recebo uma mensagem de erro "HTTP error 415" e uma mensagem de "Formato de arquivo errado"
 
     Scenario: Importação repetidas de Notas
         Given Estou na página “Avaliações”
         And Busco a opção de importação
         And Existe um arquivo “notas_roteiros.csv”
         When Carrego um arquivo diferente "Notas_roteiros.csv" 
-        Then Recebo uma mensagem de “HTTP error 409”, indicando que há sobreposição de notas
+        Then Recebo uma mensagem de “HTTP error 409” e uma mensagem de "Há sobreposição de notas"
 
     Scenario: Importação de Notas com arquivo vazio
         Given Estou na página “Avaliações”
         And Busco a opção de importação
         And Não existe um arquivo de notas
-        When Carrego um arquivo "notas_roteiros_vazio.csv"
-        Then Recebo uma mensagem de erro "HTTP error 400" e uma mensagem indicando arquivo vazio
+        When Carrego um arquivo "Notas_roteiros_vazio.csv"
+        Then Recebo uma mensagem de erro "HTTP error 400" e uma mensagem de "Arquivo vazio"
