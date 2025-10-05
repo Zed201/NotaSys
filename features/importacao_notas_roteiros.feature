@@ -27,7 +27,7 @@ Feature: Importação de Notas de Roteiros
     Scenario: Importação repetidas de Notas
         Given Estou na página “Avaliações”
         And Busco a opção de importação
-        And Existe um arquivo “notas_roteiros.csv”
+        And Existe um arquivo “Notas_roteiros.csv”
         When Carrego um arquivo diferente "Notas_roteiros.csv" 
         Then Recebo uma mensagem de “HTTP error 409” e uma mensagem de "Há sobreposição de notas"
 
@@ -37,3 +37,10 @@ Feature: Importação de Notas de Roteiros
         And Não existe um arquivo de notas
         When Carrego um arquivo "Notas_roteiros_vazio.csv"
         Then Recebo uma mensagem de erro "HTTP error 400" e uma mensagem de "Arquivo vazio"
+
+    Scenario: Importação de Notas com arquivo completamente inconsistente
+        Given Estou na página “Avaliações”
+        And Busco a opção de importação
+        And Não existe um arquivo de notas
+        When Carrego um arquivo "Gols_da_selecao.csv"
+        Then Recebo uma mensagem de erro "HTTP error 415" e uma mensagem de "Formato de arquivo errado"
