@@ -1,3 +1,22 @@
+## 0.2.0 (2025-10-17)
+
+### Feat
+
+- **importacao_notas_roteiros**: adding Importação de Notas com arquivo completamente inconsistente scenario to feature
+- **importacao_notas_roteiros**: new scenario
+- **importacao_notas_roteiros**: add two fail scenarios to the feature
+- **importacao_notas_roteiros**: add two scenarios to the feature
+- creation of the importacao_notas_roteiros feature
+
+### Fix
+
+- upgrade typescript version
+- **configs**: Front configurado e back com erros de build
+- fixing Importação de Notas com arquivo completamente inconsistente scenario of importacao_notas_roteiros
+- adjust error message in scenarios
+- resolve merge conflict in importacao_notas_roteiros.feature
+- correcting scenario description in notas_roteiros.feature
+
 ## 0.1.0 (2025-10-04)
 
 ### Feat
