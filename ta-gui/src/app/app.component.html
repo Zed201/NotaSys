@@ -8,15 +8,19 @@
 
 <table>
 <tr>
-   <td><label>Nome </label></td>
-   <td><input [(ngModel)]="aluno.nome" ></td>
+   <td><label for="nome">Nome </label></td>
+   <td><input name="nome" id="nome" [(ngModel)]="aluno.nome" ></td>
 </tr>
 <tr>
-   <td><label>CPF </label></td>
-   <td><input [(ngModel)]="aluno.cpf" ></td>
+   <td><label for="cpf" >CPF </label></td>
+   <td><input name="cpf" id="cpf" [(ngModel)]="aluno.cpf" ></td>
 </tr>
 <tr>
-   <td><label>e-mail </label></td>
-   <td><input [(ngModel)]="aluno.email" ></td>
+   <td><label for="email">e-mail </label></td>
+   <td><input name="email" id="email" [(ngModel)]="aluno.email" ></td>
+</tr>
+<tr>
+   <td><label for="login">login cin </label></td>
+   <td><input name="login" id="login" [(ngModel)]="aluno.cin_login" ></td>
 </tr>
 </table>
