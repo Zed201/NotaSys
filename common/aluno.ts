@@ -2,6 +2,7 @@ export class Aluno {
   nome: string;
   cpf: string;
   email: string;
+  github_login: string;
   metas: Map<string,string>;
 
   constructor() {
@@ -25,6 +26,7 @@ export class Aluno {
     this.nome = from.nome;
     this.cpf = from.cpf;
     this.email = from.email;
+    this.github_login = from.github_login;
     this.copyMetasFrom(from.metas);
   }
 

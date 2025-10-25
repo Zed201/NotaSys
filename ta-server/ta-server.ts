@@ -23,12 +23,12 @@ taserver.get('/alunos', function (req: express.Request, res: express.Response) {
 })
 
 taserver.post('/aluno', function (req: express.Request, res: express.Response) {
-  var aluno: Aluno = <Aluno> req.body; //verificar se È mesmo Aluno!
+  var aluno: Aluno = <Aluno> req.body; //verificar se √© mesmo Aluno!
   aluno = cadastro.cadastrar(aluno);
   if (aluno) {
     res.send({"success": "O aluno foi cadastrado com sucesso"});
   } else {
-    res.send({"failure": "O aluno n„o pode ser cadastrado"});
+    res.send({"failure": "O aluno n√£o pode ser cadastrado"});
   }
 })
 
@@ -38,7 +38,18 @@ taserver.put('/aluno', function (req: express.Request, res: express.Response) {
   if (aluno) {
     res.send({"success": "O aluno foi atualizado com sucesso"});
   } else {
-    res.send({"failure": "O aluno n„o pode ser atualizado"});
+    res.send({"failure": "O aluno n√£o pode ser atualizado"});
+  }
+})
+//
+// nao coloquei /aluno/:cpf pois queria testar com insomnia e usando o query fica mais facil
+taserver.delete('/aluno', function (req: express.Request, res: express.Response){
+  var aluno = req.query.cpf;
+  var del = cadastro.delete_elemento_cpf(aluno);
+  if (del){
+    res.send(JSON.stringify(cadastro.getAlunos()));
+  } else {
+    res.send({"failure": "O aluno n√£o existia no sistema ou n√£o pode ser deletado"});
   }
 })
 

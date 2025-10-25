@@ -3,14 +3,20 @@
     <th>Nome</th>
     <th>CPF</th>
     <th>e-mail</th>
+    <th>Login Github</th>
     <th>Requisitos</th>
+    <th>Testes</th>
+    <th>Gerencia de Projetos</th>
     <th>Gerência de Configuração</th>
  </tr>
  <tr *ngFor="let a of alunos">
     <td>{{a.nome}}</td>
     <td>{{a.cpf}}</td>
     <td>{{a.email}}</td>
+    <td>{{a.github_login}}</td>
     <td class="meta"><input [(ngModel)]="a.metas['requisitos']" (change)="atualizarAluno(a)"></td>
+    <td class="meta"><input [(ngModel)]="a.metas['Gerencia de Projetos']" (change)="atualizarAluno(a)"></td>
+    <td class="meta"><input [(ngModel)]="a.metas['Testes']" (change)="atualizarAluno(a)"></td>
     <td class="meta"><input [(ngModel)]="a.metas['gerDeConfiguracao']" (change)="atualizarAluno(a)"></td>
  </tr>
  </table>
