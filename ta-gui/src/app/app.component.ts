@@ -11,8 +11,7 @@ import { AlunoService } from './aluno.service';
 })
 export class AppComponent {
    aluno: Aluno = {nome: "", cpf: "", email: "", cin_login: ""};
-   // alunoService = new AlunoService();
-  constructor(private alunoService: AlunoService) {}
+   alunoService = new AlunoService();
 
    aluno: Aluno = new Aluno();
    alunos: Aluno[] = [];
