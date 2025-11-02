@@ -59,4 +59,4 @@ typeScript/
 
 # dotenv environment variables file
 .env
-
+tmp_dest/
