@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class UploadComponent {
 
-  file: File | null = null;
+  selectedFile: File | null = null;
   columns: string[] = [];
   
   step: number = 1; // controla qual “página” está visível
@@ -19,18 +19,18 @@ export class UploadComponent {
   onFileSelected(event: any) {
     // this.file = event.target.files[0] ?? null;
     if (event.target.files && event.target.files.length > 0) {
-          this.file = event.target.files[0];
+          this.selectedFile = event.target.files[0];
         } else {
-          this.file = null;
+          this.selectedFile = null;
         }
   }
 
   processFile() {
-    if (!this.file) return;
+    if (!this.selectedFile) return;
 
     const reader = new FileReader();
     // const ext = this.file.name.split('.').pop()?.toLowerCase();
-    const parts = this.file.name.split('.');
+    const parts = this.selectedFile.name.split('.');
         const ext = parts.length > 1 ? parts[parts.length - 1].toLowerCase() : '';
         
     reader.onload = (e: any) => {
@@ -54,9 +54,9 @@ export class UploadComponent {
     };
     
     if (ext === 'csv') {
-      reader.readAsText(this.file);
+      reader.readAsText(this.selectedFile);
     } else {
-      reader.readAsBinaryString(this.file);
+      reader.readAsBinaryString(this.selectedFile);
     }
   }
   previousStep() {

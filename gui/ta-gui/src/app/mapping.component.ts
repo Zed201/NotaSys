@@ -8,7 +8,7 @@ import { Http, Headers } from '@angular/http';
 export class MappingComponent {
 
   @Input() columns: string[] = [];
-  @Input() fileContent: any;
+  @Input() selectedFile: File | null = null; // aqui recebe o arquivo
   @Input() fileName: string = '';
 
   @Output() onComplete = new EventEmitter<void>(); // opcional, para avisar que enviou
@@ -27,8 +27,13 @@ export class MappingComponent {
       mapping: this.mapping,
       fileName: this.fileName
     };
+    
+    const formD = new FormData();
+    formD.append('file', this.selectedFile);
+    formD.append('mapping', JSON.stringify(this.mapping))
+    console.log(this.mapping)
 
-    this.http.post('/api/import', payload).subscribe(() => {
+    this.http.post('http://localhost:3000/metas', formD).subscribe(() => {
       alert('Enviado!');
       this.onComplete.emit(); // opcional
     });

@@ -1,17 +1,16 @@
 <!-- Passo 1: Upload -->
 <div *ngIf="step === 1">
   <h2>Importar Arquivo</h2>
-  <input type="file" (change)="onFileSelected($event)" accept=".csv, .xls, .xlsx">
-  <button [disabled]="!file" (click)="processFile()">Continuar</button>
+  <input type="file" name="arq" (change)="onFileSelected($event)" accept=".csv, .xls, .xlsx">
+  <button [disabled]="!selectedFile" (click)="processFile()">Continuar</button>
 </div>
 
 <!-- Passo 2: Mapping -->
 <div *ngIf="step === 2">
-  <h2>Mapeamento de Colunas</h2>
   <app-mapping 
       [columns]="columns"
-      [fileContent]="fileContent"
       [fileName]="fileName"
+      [selectedFile]="selectedFile"
       (onComplete)="step = 1">
   </app-mapping>
 
