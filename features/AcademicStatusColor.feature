@@ -3,87 +3,72 @@ Feature: Identificação de Situação Acadêmica por Cores
         I want visualizar cada aluno da turma identificado por uma cor (verde, laranja ou vermelho), de acordo com seu histórico e desempenho atual
         So eu consigo identificar rapidamente quais alunos estão em situação regular, de atenção ou crítica, e agir preventivamente para apoiar aqueles em risco de reprovação
 
-        Cenário: Envio bem-sucedido da autoavaliação
-                GIVEN estou logado como "Aluno" com o login "egrab" e senha "123"
-                AND estou na página "Autoavaliação"
-                AND vejo todas as metas de aprendizagem "META 1" e "META" com os conceitos do professor na tela, "MA" e "MPA" respectivamente.
-                WHEN eu seleciono um conceito nas "META 1" e "META 2" , "MA" e "MA" respectivamente
-                AND seleciono em "Enviar"
-                AND continua na página "Autoavaliação"
-                THEN vejo a mensagem de confirmação "Autoavaliação enviada com sucesso"
-                AND seleciono em "Menu"
-                AND Visualizo  que meus conceitos, avaliados pelo professor e por mim, ficam salvos para todas as metas, "META 1" e "META 2" de aprendizagem.
+Cenário: Exibição de cores na lista de alunos
+  GIVEN estou logado como "Professor" com o login "egrab" e senha "123"
+  AND estou na página "Lista de Alunos" da turma "Engenharia de Software (2025/1)"
+  AND o aluno "João da Silva" está matriculado na turma
+  AND a situação acadêmica de "João da Silva" é: "Frequência 90%", "Nota Parcial 8.5" e "0 Reprovações"
+  AND o aluno "Maria de Souza" está matriculada na turma
+  AND a situação acadêmica de "Maria de Souza" é: "Frequência 62%", "Nota Parcial 4.0" e "2 Reprovações"
+  WHEN acesso a página "Lista de Alunos" e a lista de estudantes é totalmente carregada
+  THEN vejo o aluno "João da Silva" exibido com o marcador de cor "Verde" 
+  AND vejo o aluno "Maria de Souza" exibido com o marcador de cor "Vermelho"
 
-        Cenário: envio mal-sucedido da autoavaliação
-                GIVEN estou logado como "Aluno" com o login "egrab" e senha "123"
-                AND estou na página "Autoavaliação"
-                AND vejo todas as metas de aprendizagem "META 1" e "META" com os conceitos do professor na tela, "MA" e "MPA" respectivamente.
-                WHEN eu seleciono um conceito na "META 1" como "MA" e não seleciono a "META 2" 
-                AND seleciono em "Enviar"
-                AND continua na página "Autoavaliação"
-                THEN vejo a mensagem de confirmação "TODOS OS CAMPOS DEVEM SER PREENCHIDOS"
-                AND seleciono em "Reenviar"
-                AND volto para a pagina "Autoavaliação 
-                AND vejo todas as metas de aprendizagem "META 1" e "META" com os conceitos do professor na tela, "MA" e "MPA" respectivamente.
+Cenário: Visualização do motivo da cor verde
+  GIVEN estou logado como "Professor" com o login "egrab" e senha "123"
+  AND estou na página "Lista de Alunos" da turma "Engenharia de Software (2025/1)"
+  AND o aluno "João da Silva" está classificado com a cor "Verde"
+  AND a situação acadêmica atual de "João da Silva" é: "Frequência 92%", "Nota Média Parcial 8.9" e "0 Reprovações"
+  WHEN seleciono sobre o nome do aluno "João da Silva"
+  THEN vejo uma o detalhamento da situação acadêmica
+  AND o detalhamento exibe o status de classificação como "Situação Acadêmica Segura"
+  AND vejo o motivo "Nota Média Parcial 8.9" com a descrição "Dentro da média de aprovação exigida"
+  AND vejo o motivo "Frequência 92%" com a descrição "Acima do limite de aprovação por frequência"
+  AND vejo o motivo "Reprovações Anteriores" com a descrição "Nenhuma reprovação detectada em pré-requisitos"
 
-        Cenário: Visualização de relatório sem discrepâncias
-                GIVEN estou logado como "Professor" com o login "egrab" e senha "123"
-                AND estou na página "MENU"
-                AND a "Turma 2" está cadastrada no sistema
-                AND há Aluno "José" com 5 metas onde todas tem autoavaliação "MPA" e avaliação do professor "MPA" cadastrado na "Turma 2"
-                AND há Aluno "Maria" com 4 metas onde todas tem autoavaliação "MA" e avaliação do professor "MA" e 1 meta com autoavaliação "MA" e avaliação do professor "MPA" cadastrada na "Turma 2"
-                AND há Aluno "Paulo" com 5 metas onde todas tem autoavaliação "MANA" e avaliação do professor "MANA" cadastrado na "Turma 2"
-                WHEN eu seleciono "DISCREPÂNCIAS"
-                AND estou na página "DISCREPÂNCIAS"
-                AND seleciono a turma como "Turma 2"
-                THEN vejo a o resumo do relatório e a lista de alunos
-                AND total alunos é igual a "3"
-                AND discrepâncias é igual a "0"
-                AND percentual de discrepâncias é igual a "0%"
+Cenário: Atualização da cor verde para laranja após novo desempenho
+  GIVEN estou logado como "Professor" com o login "egrab" e senha "123"
+  AND estou na página "Lista de Alunos" da turma "Engenharia de Software (2025/1)"
+  AND o aluno "Jose Silva" está matriculado na turma
+  AND a situação inicial de "Jose Silva" é: "Nota Média Parcial 7.8" e "Frequência 85%" 
+  WHEN registro no sistema a nova "Nota Parcial 2" de "4.0"
+  AND confirmo o registro da nota, resultando na "Nota Média Parcial de 5.9" para "Jose Silva" 
+  AND o sistema processa a atualização das métricas
+  THEN a cor de classificação do aluno "Jose Silva" muda automaticamente de "Verde" para "Laranja"
+  AND a nova classificação de "Jose Silva" na "Lista de Alunos" fica com a cor "Laranja"
 
-        Cenário: Visualização de relatório com 1 aluno com discrepâncias
-                GIVEN estou logado como "Professor" com o login "egrab" e senha "123"
-                AND estou na página "MENU"
-                AND a "Turma 2" está cadastrada no sistema
-                AND há Aluno "José" com 5 metas onde todas tem autoavaliação "MPA" e avaliação do professor "MPA" cadastrado na "Turma 2"
-                AND há Aluno "Maria" com 2 metas onde todas tem autoavaliação "MA" e avaliação do professor "MA" e 3 metas com autoavaliação "MA" e avaliação do professor "MPA" cadastrada na "Turma 2"
-                AND há Aluno "Paulo" com 5 metas onde todas tem autoavaliação "MANA" e avaliação do professor "MANA" cadastrado na "Turma 2"
-                WHEN eu seleciono "DISCREPÂNCIAS"
-                AND estou na página "DISCREPÂNCIAS"
-                AND seleciono a turma como "Turma 2"
-                THEN vejo a o resumo do relatório e a lista de alunos
-                AND total alunos é igual a "3"
-                AND discrepâncias é igual a "1"
-                AND percentual de discrepâncias é igual a "33%"
-                AND vejo aluna "Maria" com 3 discrepâncias em "5" metas
+Cenário: Visualização do motivo da cor laranja
+  GIVEN estou logado como "Professor" com o login "egrab" e senha "123"
+  AND estou na página "Lista de Alunos" da turma "Engenharia de Software (2025/1)"
+  AND o aluno "Carlos Souza" está classificado com a cor "Laranja"
+  AND a situação acadêmica atual de "Carlos Souza" é: "Frequência 78%" , "Nota Média Parcial 5.8" e "0 Reprovações"
+  WHEN seleciono sobre o nome do aluno "Carlos Souza"
+  THEN vejo o detalhamento da situação acadêmica
+  AND o detalhamento exibe o status de classificação como "Situação de Alerta"
+  AND vejo o motivo "Nota Média Parcial 5.8" com a descrição "Abaixo da média de aprovação, mas com potencial de recuperação"
+  AND vejo a observação "Ainda há 40% das avaliações a serem realizadas, com chance de reversão do status"
+  AND vejo o motivo "Frequência 78%" com a descrição "Acima do limite de reprovação por falta"
+  AND vejo o motivo "Reprovações Anteriores" com a descrição "Nenhuma reprovação detectada em pré-requisitos"
 
-        Cenário: Visualização de relatório com 100% de discrepâncias
+Cenário: Visualização do motivo da cor vermelho
+  GIVEN estou logado como "Professor" com o login "egrab" e senha "123"
+  AND estou na página "Lista de Alunos" da turma "Engenharia de Software (2025/1)"
+  AND o aluno "Maria Lima" está classificada com a cor "Vermelho"
+  AND a situação acadêmica atual de "Maria Lima" é: "Frequência 64%" , "Nota Média Parcial 4.1" e "2 Reprovações em pré-requisitos"
+  WHEN seleciono sobre o nome do aluno "Maria Lima"
+  THEN vejo o detalhamento da situação acadêmica
+  AND o detalhamento exibe o status de classificação como "Risco Crítico / Situação Irreversível"
+  AND vejo o motivo "Frequência 64%" com a descrição "Abaixo do limite de reprovação por falta"
+  AND vejo o motivo "Reprovações Anteriores" com a descrição "2 reprovações detectadas em disciplinas pré-requisito"
+  AND vejo o motivo "Nota Média Parcial 4.1" com a descrição "Abaixo da nota de corte e do limite de recuperação"
 
-                GIVEN estou logado como "Professor" com o login "egrab" e senha "123"
-                AND estou na página "MENU"
-                AND a "Turma 2" está cadastrada no sistema
-                AND há Aluno "José" com 5 metas onde todas têm autoavaliação "MPA" e avaliação do professor "MA" cadastradas na "Turma 2"
-                AND há Aluno "Maria" com 5 metas onde todas têm autoavaliação "MA" e avaliação do professor "MPA" cadastradas na "Turma 2"
-                AND há Aluno "Paulo" com 5 metas onde todas têm autoavaliação "MANA" e avaliação do professor "MPA" cadastradas na "Turma 2"
-                WHEN eu seleciono "DISCREPÂNCIAS"
-                AND estou na página "DISCREPÂNCIAS"
-                AND seleciono a turma como "Turma 2"
-                THEN vejo o resumo do relatório e a lista de alunos
-                AND total de alunos é igual a 3
-                AND discrepâncias é igual a 3
-                AND vejo aluno "José" com 5 discrepâncias em 5 metas
-                AND vejo aluna "Maria" com 5 discrepâncias em 5 metas
-                AND vejo aluno "Paulo" com 5 discrepâncias em 5 metas
-                AND percentual de discrepâncias é igual a 100%
-
-        Cenário: Reenvio da autoavaliação após alteração dos conceitos
-                GIVEN estou logado como "Aluno" com o login "egrab" e senha "123"
-                AND estou na página "Autoavaliação"
-                AND já enviei anteriormente minhas autoavaliações para todas as metas "META 1" e "META 2"
-                WHEN eu modifico os conceitos selecionados em "META 1" e "META 2" para "MPA" e "MA" respectivamente
-                AND seleciono "Enviar" novamente
-                AND continuo na página "Autoavaliação"
-                THEN vejo a mensagem de confirmação "Autoavaliação atualizada com sucesso"
-                AND seleciono em "Menu"
-                AND visualizo que os novos conceitos atualizados ficam salvos para todas as metas "META 1" e "META 2" 
-                AND "META 1" e "META 2" é igual a "MPA" e "MA" respectivamente
+Cenário: Atualização da cor laranja para vermelho após novo desempenho
+  GIVEN estou logado como "Professor" com o login "egrab" e senha "123"
+  AND estou na página "Lista de Alunos" da turma "Engenharia de Software (2025/1)"
+  AND o aluno "Ana Costa" está matriculada na turma
+  AND a situação inicial de "Ana Costa" é: "Nota Média Parcial 6.5" e "Frequência 78%"
+  WHEN registro no sistema as novas faltas que resultam na **Frequência Final de 68%**
+  AND confirmo o registro de faltas, resultando na "Frequência Final de 68%" para "Ana Costa"
+  AND o sistema processa a atualização das métricas
+  THEN a cor de classificação do aluno "Ana Costa" muda automaticamente de "Laranja" para "Vermelho"
+  AND a nova classificação de "Ana Costa" na "Lista de Alunos" fica com a cor "Vermelho"
