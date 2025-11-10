@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 import { MetasComponent } from './metas.component';
 import { AlunosComponent } from './alunos.component';
 import { AlunoService } from './aluno.service';
+import { UploadComponent } from './upload.component';
+import { MappingComponent } from './mapping.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MetasComponent,
-    AlunosComponent
+    AlunosComponent,
+    UploadComponent,
+    MappingComponent
   ],
   imports: [
     BrowserModule,

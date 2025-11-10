@@ -1,0 +1,12 @@
+<h2>Mapeamento de colunas</h2>
+
+<div *ngFor="let col of columns">
+  <label>{{ col }}</label>
+  <select [(ngModel)]="mapping[col]">
+    <option *ngFor="let opt of TARGET_FIELDS" [value]="opt">
+      {{ opt }}
+    </option>
+  </select>
+</div>
+
+<button (click)="sendToBackend()">Enviar</button>
